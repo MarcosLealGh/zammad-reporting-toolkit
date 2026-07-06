@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zammad-reporting-toolkit"
+version = "1.0.0"
+description = "Service-desk metrics extraction for Zammad via its REST API."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Marcos Leal" }]
+keywords = ["zammad", "helpdesk", "metrics", "reporting", "rest-api"]
+dependencies = ["requests==2.32.3"]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.3", "ruff==0.6.9"]
+
+[project.scripts]
+zammad-report = "extraer_tickets:main"
+
+[tool.setuptools]
+py-modules = ["extraer_tickets"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
